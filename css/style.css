@@ -1,0 +1,324 @@
+/* Redefine margens, preenchimentos e o box-sizing para todos os elementos */
+*,::before,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis CSS para temas e configurações globais */
+:root{
+    --cor-de-fundo: #f0f4f8; /* Cor de fundo da página */
+    --cor-de-texto: #1a202c; /* Cor do texto principal */
+    --cor-primaria: #4299e1; /* Cor principal usada em links e botões */
+    --cor-secundaria: #2b6cb0; /* Cor secundária usada em cabeçalhos */
+    --cor-de-fundo-card: #ffffff; /* Cor de fundo dos cartões */
+    --fonte: 'Inter', arial, sans-serif; /* Fonte principal */
+    --transicao: all 0.3s ease; /* Transição suave para todos os elementos */
+}
+
+/* Estilos para o corpo do documento */
+body{
+    font-family: var(--fonte);
+}
+
+/* Estilos para o container principal */
+.container{
+    max-width: 1200px; /* Largura máxima do container */
+    margin: 0 auto; /* Centraliza o container */
+    padding: 0 2rem; /* Preenchimento interno do container */
+}
+
+/* Estilos para os cabeçalhos h2 */
+h2{
+    font-size: 2.5rem; /* Tamanho da fonte */
+    margin-bottom: 2rem; /* Espaço abaixo do cabeçalho */
+    text-align: center; /* Centraliza o texto */
+    color: var(--cor-secundaria); /* Cor do texto */
+}
+
+/* Estilos para o cabeçalho da página */
+header{
+    background-color: var(--cor-de-fundo-card); /* Cor de fundo do cabeçalho */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    position: fixed; /* Fixa o cabeçalho no topo da página */
+    width: 100%; /* Largura completa do cabeçalho */
+    top: 0; /* Alinha ao topo da página */
+    z-index: 1000; /* Nível do cabeçalho em relação aos outros elementos */
+}
+
+/* Estilos para a navegação no cabeçalho */
+nav{
+    display: flex; /* Usa flexbox para os itens de navegação */
+    justify-content: space-between; /* Espaça os itens igualmente */
+    align-items: center; /* Alinha itens ao centro */
+    padding: 1rem 0; /* Preenchimento interno */
+}
+
+/* Estilos para o logo no cabeçalho */
+.logo{
+    font-size: 1.5rem; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+    color: var(--cor-secundaria); /* Cor do texto */
+}
+
+/* Estilos para a lista de links de navegação */
+.nav-links{
+    display: flex; /* Usa flexbox para os links */
+    list-style: none; /* Remove marcadores de lista */
+}
+
+/* Estilos para os itens da lista de navegação */
+.nav-links li{
+    margin-left: 2rem; /* Espaço à esquerda de cada item */
+}
+
+/* Estilos para os links de navegação */
+.nav-links a{
+    color: var(--cor-de-texto); /* Cor do texto */
+    text-decoration: none; /* Remove sublinhado */
+    transition: var(--transicao); /* Transição suave */
+}
+
+/* Estilos para os links ao passar o mouse */
+.nav-links a:hover{
+    color: var(--cor-primaria); /* Muda a cor ao passar o mouse */
+}
+
+/* Estilos para a seção principal */
+main{
+    margin-top: 5rem; /* Espaço acima da seção */
+}
+
+/* Estilos para as seções */
+section{
+    padding: 6rem 0; /* Preenchimento interno das seções */
+}
+
+
+/* Estilização da Seção Sobre */
+.dev{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Corrigido para "fr" ser uma unidade válida */
+    gap: 2rem;
+    align-items: center;
+}
+
+/* Estilos para o cabeçalho na seção Dev */
+.dev-texto h1{
+    font-size: 3.5rem; /* Tamanho da fonte */
+    margin-bottom: 1rem; /* Espaço abaixo do cabeçalho */
+    color: var(--cor-primaria); /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilos para os parágrafos na seção Dev */
+.dev-texto p{
+    font-size: 1.23rem; /* Tamanho da fonte */
+    margin-bottom: 2rem; /* Espaço abaixo do parágrafo */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilos para a seção de imagens */
+.dev-imagem{
+    display: flex; /* Usa flexbox para layout das imagens */
+    flex-wrap: wrap; /* Permite que as imagens sejam distribuídas em várias linhas */
+    padding: 10px; /* Preenchimento interno */
+    justify-content: center; /* Centraliza as imagens */
+    gap: 20px; /* Espaço entre as imagens */
+    margin-top: 10px; /* Espaço acima da seção */
+}
+
+/* Estilos para as imagens */
+.dev-imagem img {
+    width: 300px; /* Largura das imagens */
+    height: 300px; /* Altura das imagens */
+    object-fit: cover; /* Ajusta a imagem para cobrir o contêiner */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: transform 0.3s ease; /* Transição suave ao passar o mouse */
+}
+
+/* Estilos para telas menores (max-width: 768px) */
+@media (max-width: 768px){
+    .dev{
+        grid-template-columns: 1fr; /* Ajusta para uma coluna em telas menores */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .dev-texto{
+        margin-bottom: 2rem; /* Espaço abaixo do texto */
+    }
+
+    .imagem-perfil{
+        max-width: 200px; /* Largura máxima da imagem de perfil */
+    }
+}
+
+/* Estilos para a grade de habilidades */
+.skills-grid{
+    display: grid; /* Usa grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Colunas automáticas com tamanho mínimo de 150px */
+    gap: 2rem; /* Espaço entre os itens */
+}
+
+/* Estilos para os itens de habilidades */
+.skills-item{
+    background-color: var(--cor-de-fundo-card); /* Cor de fundo dos itens */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 1.5rem; /* Preenchimento interno */
+    text-align: center; /* Centraliza o texto */
+    border-radius: 10px; /* Bordas arredondadas */
+    transition: var(--transicao); /* Transição suave */
+    align-items: center; /* Centraliza os itens */
+}
+
+/* Efeito de hover para os itens de habilidades */
+.skills-item:hover{
+    transform: translateY(-5px); /* Eleva os itens ao passar o mouse */
+}
+
+/* Estilos para os ícones de habilidades */
+.skills-icon{
+    font-size: 2.5rem; /* Tamanho da fonte dos ícones */
+    margin-bottom: 1rem; /* Espaço abaixo dos ícones */
+}
+
+/* Estilos para a seção de contato */
+.contato {
+    background-color: var(--cor-secundaria); /* Cor de fundo da seção */
+    color: white; /* Cor do texto */
+}
+
+/* Estilos para o formulário de contato */
+.contato-form{
+    max-width: 600px; /* Largura máxima do formulário */
+    margin: 0 auto; /* Centraliza o formulário */
+}
+
+/* Estilos para os grupos de formulário */
+.grupo-formulario{
+    margin-bottom: 1.5rem; /* Espaço abaixo dos grupos */
+}
+
+/* Estilos para os rótulos (labels) */
+label{
+    margin-bottom: 0.5rem; /* Espaço abaixo dos rótulos */
+    display: block; /* Exibe os rótulos como blocos */
+}
+
+/* Estilos para os inputs e textarea */
+input,textarea{
+    background-color: rgba(255, 255, 255, 0.1); /* Cor de fundo */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borda */
+    padding: 0.75rem; /* Preenchimento interno */
+    color: white; /* Cor do texto */
+    width: 100%; /* Largura total */
+}
+
+/* Estilos para o botão de envio */
+button{
+    background: green; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    padding: 0.75rem 1.5rem; /* Preenchimento interno */
+    border: none; /* Remove a borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão */
+}
+
+/* Estilos para o título de contato */
+.titulo-contato{
+    color: white; /* Cor do texto */
+}
+
+/* Estilos para o rodapé */
+footer{
+    background-color: var(--cor-de-fundo-card); /* Cor de fundo do rodapé */
+    text-align: center; /* Centraliza o texto */
+    padding: 2rem 0; /* Preenchimento interno */
+}
+
+/* Estilos para os ícones no rodapé */
+.icones-footer{
+    display: flex; /* Usa flexbox para os ícones */
+    justify-content: center; /* Centraliza os ícones */
+    list-style: none; /* Remove marcadores de lista */
+    margin-bottom: 1rem; /* Espaço abaixo dos ícones */
+}
+
+/* Animação para fade-in */
+@keyframes fade {
+    from {
+        opacity: 0; /* Início da animação com opacidade 0 */
+        transform: translateY(20px); /* Início da animação com posição deslocada */
+    }
+    to {
+        opacity: 1; /* Fim da animação com opacidade total */
+        transform: translateY(0); /* Fim da animação com posição original */
+    }
+}
+
+/* Estilos para aplicar a animação fade-in */
+.fade-in{
+    animation: fade 1s ease-out; /* Aplica a animação de fade-in */
+}
+
+ #projetos {
+    width: 80%;
+    margin: 0 auto;
+    background-color: aliceblue; /* Cor de fundo */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px;
+    margin-top: 50px;
+    border: 1px solid #ccc; /* Suaviza a borda */
+    text-align: center;
+}
+
+.titulo-projetos {
+    font-size: 25px;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #4acbe2; /* Linha decorativa abaixo do título */
+    display: inline-block;
+    padding-bottom: 5px;
+    
+}
+
+.texto-projetos {
+    font-size: 18px;
+    padding: 0px 30px;
+    line-height: 1.6; /* Melhora a legibilidade do texto */
+    color: #555; /* Cor mais suave para o texto */
+    text-align: justify; /* Deixa o texto alinhado dos dois lados */
+    margin-bottom: 20px; /* Espaço entre o texto e o botão */
+    text-align: center;
+}
+
+.botao-portifolio {
+    display: inline-block;
+    padding: 10px 25px; /* Ajusta o padding para um botão mais confortável */
+    background-color: #333; /* Cor de fundo azul */
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remove o sublinhado */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transição suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave no botão */
+}
+
+.botao-portifolio:hover {
+    background-color: #4acbe2; /* Cor de fundo ao passar o mouse */
+    transform: translateY(-2px); /* Eleva levemente o botão */
+}
+
+
+
+
+
+
+
+
+
+
+
+
