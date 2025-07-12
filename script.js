@@ -1,11 +1,49 @@
-document.querySelector('.contato-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede o envio real do formulário
+// Seleciona o formulário e o botão de envio
+const form = document.querySelector('.contato-form');
+const submitButton = form.querySelector('button[type="submit"]');
+
+// Função para lidar com o envio do formulário
+async function handleSubmit(event) {
+  //  Previne o comportamento padrão de recarregar a página
+  event.preventDefault();
   
-    // Aqui você pode incluir a lógica para enviar o email (se necessário)
+  //  Coleta os dados do formulário
+  const data = new FormData(event.target);
+  
+  // Muda o texto do botão para dar feedback ao usuário
+  submitButton.innerText = 'Enviando...';
+  submitButton.disabled = true; 
+
+  try {
+    //  Envia os dados para o FormSubmit usando a API Fetch
+    const response = await fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        'Accept': 'application/json' // Pede uma resposta em JSON para o FormSubmit
+      }
+    });
+
     
-    // Exibe a notificação
-    alert('Email enviado com sucesso!');
+    if (response.ok) {
+      
+      alert('Email enviado com sucesso!');
+      
+      form.reset();
+    } else {
+      
+      throw new Error('Houve um problema no envio do formulário.');
+    }
+  } catch (error) {
     
-    // Limpa os campos do formulário após o envio
-    document.querySelector('.contato-form').reset();
-  });
+    console.error(error);
+    alert('Erro ao enviar o email. Por favor, tente novamente mais tarde.');
+  } finally {
+   
+    submitButton.innerText = 'Mandar mensagem';
+    submitButton.disabled = false;
+  }
+}
+
+
+form.addEventListener('submit', handleSubmit);
